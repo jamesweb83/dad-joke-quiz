@@ -30,25 +30,81 @@ const DadJokeQuiz = () => {
   
   const quizDatabase = [
     {
+      question: "세상에서 가장 빠른 떡은?",
+      answer: "헐레벌떡"
+  },
+  {
+      question: "왕이 넘어지면?",
+      answer: "킹콩"
+  },
+  {
       question: "신발이 화나면?",
       answer: "신발끈"
-    },
-    {
-      question: "미꾸라지가 시장에 가면?",
-      answer: "미꾸손"
-    },
-    {
-      question: "고기 먹을 때 자주 사용하는 재치있는 언어는?",
-      answer: "상추어"
-    },
-    {
-      question: "세상에서 가장 잘생긴 가위는?",
-      answer: "핸썸가위"
-    },
-    {
+  },
+  {
+      question: "서울이 추우면?",
+      answer: "서울시립"
+  },
+  {
+      question: "소금의 유통기한은?",
+      answer: "천일"
+  },
+  {
+      question: "비가 한시간 동안 내리면?",
+      answer: "추적60분"
+  },
+  {
+      question: "세상에서 가장 쉬운 숫자는?",
+      answer: "십구만"
+  },
+  {
+      question: "칼이 정색하면?",
+      answer: "검정색"
+  },
+  {
+      question: "반성문을 영어로 하면?",
+      answer: "글로벌"
+  },
+  {
+      question: "세상에서 가장 추운 바다는?",
+      answer: "썰렁해"
+  },
+  {
+      question: "닭들이 좋아하는 약은?",
+      answer: "삐약"
+  },
+  {
+      question: "공이 웃으면?",
+      answer: "풋볼"
+  },
+  {
+      question: "세상에서 가장 지루한 중학교는?",
+      answer: "로딩중"
+  },
+  {
+      question: "세상에서 가장 억울한 도형은?",
+      answer: "원통"
+  },
+  {
       question: "사과가 웃으면?",
       answer: "풋사과"
-    }
+  },
+  {
+      question: "소나무가 삐지면?",
+      answer: "칫솔"
+  },
+  {
+      question: "바나나가 웃으면?",
+      answer: "바나나킥"
+  },
+  {
+      question: "세상에서 가장 비싼 새는?",
+      answer: "백조"
+  },
+  {
+      question: "오리가 얼면?",
+      answer: "언덕"
+  }
   ];
 
   const getTodayQuiz = () => {
