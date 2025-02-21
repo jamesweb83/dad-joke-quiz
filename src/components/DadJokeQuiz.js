@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './DadJokeQuiz.css';
 
 const AdComponent = ({ adSlot, adFormat }) => {
   useEffect(() => {
@@ -70,22 +71,22 @@ const DadJokeQuiz = () => {
   const isCorrect = answer.trim().toLowerCase() === todayQuiz.answer.toLowerCase();
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-md mx-auto">
+    <div className="quiz-container">
+      <div className="quiz-content">
         {/* 상단 광고 */}
         <div className="mb-6">
           <AdComponent adSlot="1234567890" adFormat="auto" />
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">오늘의 아재개그</h2>
-            <p className="text-gray-500">매일 새로운 퀴즈가 업데이트됩니다</p>
+        <div className="quiz-box">
+          <div className="quiz-header">
+            <h2 className="quiz-title">오늘의 아재개그</h2>
+            <p className="quiz-subtitle">매일 새로운 퀴즈가 업데이트됩니다</p>
           </div>
 
           <div className="space-y-6">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <p className="text-xl text-center font-medium text-blue-900">
+            <div className="question-box">
+              <p className="question-text">
                 {todayQuiz.question}
               </p>
             </div>
@@ -96,28 +97,28 @@ const DadJokeQuiz = () => {
                   type="text"
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="answer-input"
                   placeholder="정답을 입력하세요"
                 />
                 
                 <button 
                   onClick={handleCheck}
-                  className="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+                  className="check-button"
                 >
                   정답 확인
                 </button>
               </div>
             ) : (
               <div className="space-y-4">
-                <div className={`p-6 rounded-lg text-center ${isCorrect ? 'bg-green-50' : 'bg-red-50'}`}>
-                  <h3 className={`text-xl font-bold ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
+                <div className={`result-box ${isCorrect ? 'result-correct' : 'result-wrong'}`}>
+                  <h3 className="quiz-result-text">
                     {isCorrect ? '정답입니다! 👏' : '틀렸습니다! 😅 다시 도전해보세요!'}
                   </h3>
                 </div>
                 
                 <button
                   onClick={handleTryAgain}
-                  className="w-full bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors"
+                  className="try-again-button"
                 >
                   다시 도전하기
                 </button>
