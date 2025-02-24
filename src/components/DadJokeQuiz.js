@@ -1,7 +1,28 @@
-import React, { useState, lazy, Suspense } from 'react';
-import './DadJokeQuiz.css';
+import React, { useState, useEffect } from 'react';
+import '../styles/DadJokeQuiz.css';
 
-const AdComponent = lazy(() => import('./AdComponent'));
+const AdComponent = ({ adSlot, adFormat }) => {
+  useEffect(() => {
+    try {
+      if (window.adsbygoogle) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (err) {
+      console.error('AdSense 광고 로드 실패:', err);
+    }
+  }, []);
+
+  return (
+    <ins
+      className="adsbygoogle"
+      style={{ display: 'block' }}
+      data-ad-client="ca-pub-7988179761724460"
+      data-ad-slot={adSlot}
+      data-ad-format={adFormat || 'auto'}
+      data-full-width-responsive="true"
+    />
+  );
+};
 
 const DadJokeQuiz = () => {
   const [answer, setAnswer] = useState('');
@@ -113,15 +134,13 @@ const DadJokeQuiz = () => {
     >
       <div className="quiz-content">
         {/* 상단 광고 */}
-        <Suspense fallback={<div aria-live="polite">광고 로딩 중...</div>}>
-          <div className="mb-6">
-            <AdComponent 
-              adSlot="1234567890" 
-              adFormat="auto" 
-              aria-label="상단 광고 배너"
-            />
-          </div>
-        </Suspense>
+        <div className="mb-6 ad-container">
+          <AdComponent 
+            adSlot="1234567890" 
+            adFormat="auto" 
+            aria-label="상단 광고 배너"
+          />
+        </div>
 
         <article className="quiz-box" aria-live="polite">
           <header className="quiz-header">
@@ -188,28 +207,26 @@ const DadJokeQuiz = () => {
         </article>
 
         {/* 하단 광고 */}
-        <Suspense fallback={<div aria-live="polite">광고 로딩 중...</div>}>
-          <div className="mt-6">
-            <AdComponent 
-              adSlot="0987654321" 
-              adFormat="auto" 
-              aria-label="하단 광고 배너"
-            />
-          </div>
-        </Suspense>
-      </div>
+        <div className="mt-6 ad-container">
+          <AdComponent 
+            adSlot="0987654321" 
+            adFormat="auto" 
+            aria-label="하단 광고 배너"
+          />
+        </div>
 
-      {/* JSON-LD 구조화된 데이터 */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "오늘의 아재개그 퀴즈",
-          "description": "매일 새로운 아재개그 퀴즈로 웃음 가득한 하루를 시작하세요!",
-          "keywords": "아재개그, 퀴즈, 개그, 일일 퀴즈",
-          "inLanguage": "ko-KR"
-        })}
-      </script>
+        {/* JSON-LD 구조화된 데이터 */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "오늘의 아재개그 퀴즈",
+            "description": "매일 새로운 아재개그 퀴즈로 웃음 가득한 하루를 시작하세요!",
+            "keywords": "아재개그, 퀴즈, 개그, 일일 퀴즈",
+            "inLanguage": "ko-KR"
+          })}
+        </script>
+      </div>
     </main>
   );
 };
