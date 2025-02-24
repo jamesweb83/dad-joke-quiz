@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/DadJokeQuiz.css';
+import './DadJokeQuiz.css';
 
 const AdComponent = ({ adSlot, adFormat }) => {
   useEffect(() => {
